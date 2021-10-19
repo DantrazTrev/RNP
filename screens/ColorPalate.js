@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, SafeAreaView, StyleSheet, FlatList } from 'react-native';
-import Colorbox from './components/colorbox';
-const App = () => {
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import Colorbox from '../components/colorbox';
+const ColorPalette = () => {
   const COLORS = [
     { colorName: 'Base03', hexCode: '#002b36' },
     { colorName: 'Base02', hexCode: '#073642' },
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ColorPalate;
+export default ColorPalette;
