@@ -24,6 +24,7 @@ const ColorPalette = () => {
     <FlatList
       data={COLORS}
       keyExtractor={(item) => item.hexCode}
+      style={styles.container}
       renderItem={({ item }) => (
         <Colorbox color={item.hexCode} text={item.colorName} />
       )}
@@ -40,16 +41,13 @@ const styles = StyleSheet.create({
   magenta: { backgroundColor: '#d33682' },
   orange: { backgroundColor: '#cb4b16' },
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 5,
-    marginHorizontal: 20,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingTop: 40,
+    backgroundColor: 'white',
   },
   heading: {
     alignItems: 'flex-start',
     justifyContent: 'center',
-    marginTop: 30,
     marginHorizontal: 10,
     padding: 10,
     fontSize: 15,
