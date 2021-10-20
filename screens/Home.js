@@ -6,7 +6,7 @@ import { COLORS } from '../data';
 
 const Home = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={COLORS}
         keyExtractor={(item, idx) => idx}
@@ -35,6 +35,9 @@ const Home = ({ navigation }) => {
           );
         }}
       />
+      <TouchableOpacity onPress={() => navigation.navigate('Counter')}>
+        <Text>Counter</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -47,6 +50,9 @@ const styles = StyleSheet.create({
   item: {
     marginHorizontal: 20,
     paddingTop: 10,
+  },
+  container: {
+    backgroundColor: 'white',
   },
 });
 
