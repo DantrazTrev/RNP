@@ -31,7 +31,7 @@ export const COLORS = [
     ],
   },
   {
-    name: 'FM',
+    name: 'Frontend Masters',
     colors: [
       { colorName: 'Red', hexCode: '#c02d28' },
       { colorName: 'Black', hexCode: '#3e3e3e' },
