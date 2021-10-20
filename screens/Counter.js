@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Counter = () => {
   const [count, setcount] = useState(0);
+  const Inc = useCallback(() => {
+    setcount((currentValue) => currentValue + 1);
+  }, []);
+  const Dec = useCallback(() => {
+    setcount((currentValue) => currentValue - 1);
+  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{count}</Text>
       <View style={styles.button}>
-        <TouchableOpacity onPress={() => setcount(count + 1)}>
+        <TouchableOpacity onPress={Inc}>
           <Text style={styles.btn}>+</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setcount(count - 1)}>
+        <TouchableOpacity onPress={Dec}>
           <Text style={styles.btn}>-</Text>
         </TouchableOpacity>
       </View>

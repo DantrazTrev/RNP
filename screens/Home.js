@@ -35,8 +35,11 @@ const Home = ({ navigation }) => {
           );
         }}
       />
-      <TouchableOpacity onPress={() => navigation.navigate('Counter')}>
-        <Text>Counter</Text>
+      <TouchableOpacity
+        style={styles.heading}
+        onPress={() => navigation.navigate('Counter')}
+      >
+        <Text style={styles.text}>Counter</Text>
       </TouchableOpacity>
     </View>
   );
@@ -53,6 +56,10 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'white',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
   },
 });
 
