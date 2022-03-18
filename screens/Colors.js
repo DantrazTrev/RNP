@@ -36,6 +36,16 @@ const Colors = ({ navigation }) => {
       <FlatList
         data={COLORS}
         style={styles.list}
+        ListHeaderComponent={
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('AddColorModal', {});
+            }}
+            style={styles.item}
+          >
+            <Text style={styles.text}>Add Color palette</Text>
+          </TouchableOpacity>
+        }
         keyExtractor={(item, idx) => item.id}
         renderItem={({ item, idx }) => {
           return (

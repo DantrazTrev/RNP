@@ -6,24 +6,39 @@ import Home from './screens/Home';
 import ColorPalette from './screens/ColorPalate';
 import Counter from './screens/Counter';
 import Form from './screens/Form';
+import CPModal from './screens/CPModal';
 const App = () => {
-  const Stack = createStackNavigator();
+  const RootStack = createStackNavigator();
+  const MainStack = createStackNavigator();
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Colors' component={Colors} />
-        <Stack.Screen
+  const MainStackScreen = () => {
+    return (
+      <MainStack.Navigator>
+        <MainStack.Screen name='Home' component={Home} />
+        <MainStack.Screen name='Colors' component={Colors} />
+        <MainStack.Screen
           name='ColorPalette'
           options={({ route }) => ({
             title: route.params.name,
           })}
           component={ColorPalette}
         />
-        <Stack.Screen name='Counter' component={Counter} />
-        <Stack.Screen name='Form' component={Form} />
-      </Stack.Navigator>
+        <MainStack.Screen name='Counter' component={Counter} />
+        <MainStack.Screen name='Form' component={Form} />
+      </MainStack.Navigator>
+    );
+  };
+
+  return (
+    <NavigationContainer>
+      <RootStack.Navigator screenOptions={{ presentation: 'modal' }}>
+        <RootStack.Screen
+          name='Main'
+          component={MainStackScreen}
+          options={{ headerShown: false }}
+        />
+        <RootStack.Screen name='AddColorModal' component={CPModal} />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };
