@@ -1,55 +1,38 @@
-import React from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, Text, FlatList, StyleSheet, RefreshControl } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import ColorRose from '../components/colorrose';
-import { COLORS } from '../data';
 
 const Home = ({ navigation }) => {
+  const screens = ['Colors', 'Counter', 'Form'];
   return (
     <View style={styles.container}>
       <FlatList
-        data={COLORS}
+        data={screens}
+        style={styles.list}
         keyExtractor={(item, idx) => idx}
-        renderItem={({ item }) => {
+        renderItem={({ item, idx }) => {
           return (
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('ColorPalette', {
-                  name: item.name,
-                  ColorPalette: item.colors,
-                });
+                navigation.navigate(item);
               }}
               style={styles.item}
             >
-              <Text style={styles.text}>{item.name}</Text>
-              <ColorRose
-                colors={item.colors}
-                onPress={() => {
-                  navigation.navigate('ColorPalette', {
-                    name: item.name,
-                    ColorPalette: item.colors,
-                  });
-                }}
-              />
+              <Text style={styles.text}>{item}</Text>
             </TouchableOpacity>
           );
         }}
       />
-      <TouchableOpacity
-        style={styles.heading}
-        onPress={() => navigation.navigate('Counter')}
-      >
-        <Text style={styles.text}>Counter</Text>
-      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 14,
+    fontSize: 25,
     fontWeight: 'bold',
   },
+
   item: {
     marginHorizontal: 20,
     paddingTop: 10,
@@ -57,9 +40,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
+    alignContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
 });
 
