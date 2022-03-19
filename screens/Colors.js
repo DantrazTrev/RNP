@@ -3,7 +3,8 @@ import { View, Text, FlatList, StyleSheet, RefreshControl } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ColorRose from '../components/colorrose';
 
-const Colors = ({ navigation }) => {
+const Colors = ({ navigation, route }) => {
+  const newPalette = route.params ? route.params.newPalette : null;
   const [COLORS, setColors] = useState([]);
   const [Isrefreshing, setIsrefreshing] = useState(false);
 
@@ -31,6 +32,11 @@ const Colors = ({ navigation }) => {
   useEffect(() => {
     fetchColors();
   }, []);
+  useEffect(() => {
+    if (newPalette) {
+      setColors((current) => [newPalette, ...current]);
+    }
+  }, [newPalette]);
   return (
     <View style={styles.container}>
       <FlatList
@@ -46,7 +52,7 @@ const Colors = ({ navigation }) => {
             <Text style={styles.text}>Add Color palette</Text>
           </TouchableOpacity>
         }
-        keyExtractor={(item, idx) => item.id}
+        keyExtractor={(item, idx) => item.paletteName}
         renderItem={({ item, idx }) => {
           return (
             <TouchableOpacity

@@ -3,13 +3,13 @@ import { View, Text, FlatList, StyleSheet, RefreshControl } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = ({ navigation }) => {
-  const screens = ['Colors', 'Counter', 'Form'];
+  const screens = ['Colors', 'Counter'];
   return (
     <View style={styles.container}>
       <FlatList
         data={screens}
         style={styles.list}
-        keyExtractor={(item, idx) => idx}
+        keyExtractor={(item, idx) => item}
         renderItem={({ item, idx }) => {
           return (
             <TouchableOpacity
